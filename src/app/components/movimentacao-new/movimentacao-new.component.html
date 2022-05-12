@@ -1,0 +1,37 @@
+<div class="container d-flex flex-column align-items-center">
+  <div class="row g-3 mb-4 p-4 w-75 border " id="formulario">
+    <h1 class="text-center">Nova movimentação</h1>
+    <hr class="my-2">
+    <div class="col-md-3">
+      <label for="iData" class="form-label">Data</label>
+      <input type="datetime-local" class="form-control" id="iData" [(ngModel)]="dataHora">
+    </div>
+    <div class="col-md-9">
+      <label for="iCorrentista" class="form-label">Correntista</label>
+      <select id="iCorrentista" [(ngModel)]="correntistaSelected" class="form-select">
+        <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="iDescricao" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="iDescricao" [(ngModel)]="descricao" placeholder="Informe uma descrição">
+    </div>
+    <div class="col-md-3">
+      <label for="iTipo" class="form-label">Tipo</label>
+      <select id="iTipo" class="form-select" [(ngModel)]="tipo">
+        <option value="Receita" selected>RECEITA</option>
+        <option value="Despesa">DESPESA</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="iValor" class="form-label">R$ Valor</label>
+      <input type="text" class="form-control" id="iValor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="valor">
+    </div>
+
+  </div>
+  <div class=" mb-4 w-50 " id="butoes">
+    <a class="btn btn-outline-danger btn-sm" routerLink="/movimentacoes">Cancelar</a>
+    <button class="btn btn-outline-success btn-sm"  type="button" (click)="save()" >Confirmar</button>
+  </div>
+
+</div>
